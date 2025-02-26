@@ -1,0 +1,22 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+<main class="main">
+ <!-- Page Title -->
+ <div class="page-title dark-background" data-aos="fade" style="background-image: url(../static/assets/img/page-title-bg.jpg);">
+    <div class="container position-relative">
+      <h1>Track Package Details</h1>
+      <p>Detailed information about your package, including current status and history.</p>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li class="current">Track Details</li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
+  <!-- form here -->
+  
+</main>
+{% endblock %}
