@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-*u52(zk6@#n2i@x$)h*o9)vwp!2s==a)q%)q7bfxd&e55h0xw1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['famcitysch.org', 'qwog808okco0w4o0cwoo4gk8.famcitysch.org']
+ALLOWED_HOSTS = ['famcitysch.org', 'qwog808okco0w4o0cwoo4gk8.famcitysch.org', 'tkk4ws8ks48cs4soo40wsg88.famcitysch.org', '*']
 
 
 # Application definition
@@ -126,5 +126,5 @@ DEFAULT_FROM_EMAIL = 'lewisschris440@gmail.com'  # default sender email
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = os.path.join(str(BASE_DIR), 'staticfiles')
+STATIC_ROOT = os.path.join(str(BASE_DIR), 'static')
 
