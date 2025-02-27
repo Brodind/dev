@@ -1,100 +1,49 @@
+
 {% extends 'layout.html' %}
 {% block content %}
 {% load static %}
 <main class="main">
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url('{% static "assets/img/page-title-bg.jpg" %}');">
-        <div class="container position-relative">
-            <h1>Track Your Package</h1>
-            <p>Enter your PackTrack tracking number for real-time updates on your package delivery status.</p>
-            <nav class="breadcrumbs">
-                <ol>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li class="current">Track &amp; Trace</li>
-                </ol>
-            </nav>
-        </div>
-    </div><!-- End Page Title -->
-    <div class="container mt-5">
-       
-        {% if package %}
+ <!-- Page Title -->
+ <div class="page-title dark-background" data-aos="fade" style="background-image: url(../static/assets/img/page-title-bg.jpg);">
+    <div class="container position-relative">
+      <h1>Track Your Package</h1>
+      <p>Enter your tracking ID to get real-time updates on your package's location and delivery status.</p>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li class="current">Track</li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
+  <div class="container mt-5">
+    <h2>Track Your Package</h2>
+    {% if package %}
         <div class="alert alert-info" role="alert">
-           
-            <h4 class="alert-heading py-2 my-2">Tracking ID: {{ package.tracking_id }}</h4>
-            <p>Sender: {{ package.sender_name }}</p>
-            <p>Receiver: {{ package.receiver_name }}</p>
-            <p>Status: <strong>{{ package.get_status_display }}</strong></p>
+            
+            <h4 class="alert-heading py-2 my-2">Tracking Results</h4>
+            <p>Tracking ID: {{ package.tracking_id }}</p>
+            <p>Current Status: <strong>{{ package.get_status_display }}</strong></p>
             <hr>
             <p class="mb-0">Last updated: {{ package.updated_at }}</p>
         </div>
-
-
-        {% else %}
+    {% else %}
         <form method="post" class="mx-2 px-2 my-3 py-3">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit">Track Package</button>
+                <button class="btn btn-primary" type="submit">Track Your Package</button>
             </div>
         </form>
-        {% endif %}
-        {% if package %}
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const status = "{{ package.status }}";
-                const trackSteps = document.querySelectorAll('.track li');
-                const trackIcon = document.querySelector('.track-icon');
-
-                trackSteps.forEach(step => {
-                    const stepStatus = step.classList[1]; // Get the status class from li
-                    if (stepStatus) {
-                        if (status === stepStatus || getStatusIndex(status) >= getStatusIndex(stepStatus)) {
-                            step.classList.add('active'); // Add 'active' class to highlight step
-                        }
-                    }
-                });
-
-                function getStatusIndex(status) {
-                    const statuses = ['processing', 'shipped', 'in_transit', 'out_for_delivery', 'delivered'];
-                    return statuses.indexOf(status);
-                }
-
-                // Animate truck icon
-                if (package) {
-                    trackIcon.style.display = 'block'; // Show the icon
-                    trackIcon.style.animationPlayState = 'running'; // Ensure animation is running
-
-                    switch (status) {
-                        case 'shipped':
-                            trackIcon.style.animationName = 'moveToShipped';
-                            break;
-                        case 'in_transit':
-                            trackIcon.style.animationName = 'moveToInTransit';
-                            break;
-                        case 'out_for_delivery':
-                            trackIcon.style.animationName = 'moveToOutForDelivery';
-                            break;
-                        case 'delivered':
-                            trackIcon.style.animationName = 'moveToDelivered';
-                            break;
-                        default:
-                            trackIcon.style.animationName = 'moveTrackIcon'; // Default processing animation
-                    }
-                } else {
-                    trackIcon.style.display = 'none'; // Hide icon when no package tracked
-                    trackIcon.style.animationPlayState = 'paused'; // Pause animation when no package
-                }
-            });
-        </script>
-        {% endif %}
-    </div>
-    <!-- form here -->
-    <!-- <form class="mx-2 px-2 my-3 py-3">
-        <div class="mb-3">
-          <label for="TrackingNumber" class="form-label">Tracking Number</label>
-          <input type="text" class="form-control" id="TrackingNumber" placeholder="Enter tracking number" aria-describedby="track">
-        </div> -->
-
-    </form>
+    {% endif %}
+</div>
+  <!-- form here -->
+  <!-- <form class="mx-2 px-2 my-3 py-3">
+    <div class="mb-3">
+      <label for="TrackingNumber" class="form-label">Tracking Number</label>
+      <input type="text" class="form-control" id="TrackingNumber" aria-describedby="track">
+    </div> -->
+    
+  </form>
 </main>
 {% endblock %}

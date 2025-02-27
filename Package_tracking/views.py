@@ -36,3 +36,4 @@ def services(request):
 
 def services_details(request):
     return render(request, 'services-details.html')
+
