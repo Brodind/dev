@@ -19,4 +19,4 @@ class Package(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "%s - %s" % (self.tracking_id, self.receiver_name)
+        return f"{self.tracking_id} - {self.receiver_name}"
