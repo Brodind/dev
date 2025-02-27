@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-*u52(zk6@#n2i@x$)h*o9)vwp!2s==a)q%)q7bfxd&e55h0xw1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://qwog808okco0w4o0cwoo4gk8.famcitysch.org']
+ALLOWED_HOSTS = ['https://qwog808okco0w4o0cwoo4gk8.famcitysch.org']
 
 
 # Application definition
@@ -39,6 +39,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'packtracSite.urls'
