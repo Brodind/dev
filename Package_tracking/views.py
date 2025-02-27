@@ -11,7 +11,7 @@ def home(request):
             return render(request, 'track.html', {'package': package})
     else:
         form = TrackingForm()
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'index.html', {'form': form, 'package': None})
 
 def track(request):
     if request.method == 'POST':

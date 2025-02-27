@@ -23,3 +23,5 @@ RUN pip install gunicorn
 
 # Set the command to run the app with Gunicorn in production
 CMD ["gunicorn", "packtracSite.wsgi:application", "--bind", "0.0.0.0:8000"]
+
+RUN python3 manage.py collectstatic
